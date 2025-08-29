@@ -1,0 +1,87 @@
+/* Floating Help Button Styles */
+.floating-help-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #FCD34D, #F59E0B);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  text-decoration: none;
+  border: none;
+}
+
+.floating-help-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(245, 158, 11, 0.6);
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+}
+
+.floating-help-button:active {
+  transform: translateY(-1px);
+}
+
+.floating-help-button::before {
+  content: '?';
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+/* Tooltip */
+.floating-help-button::after {
+  content: 'Precisa de Ajuda? Acesso nossa FAQ';
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.floating-help-button:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .floating-help-button {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .floating-help-button::before {
+    font-size: 24px;
+  }
+  
+  .floating-help-button::after {
+    right: 60px;
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-help-button::after {
+    display: none;
+  }
+}
