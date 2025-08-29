@@ -1,4 +1,4 @@
- .u-section-1 {
+.u-section-1 {
   background-image: none;
   --color-var: #4c7397;
   min-height: 1645px;
@@ -146,4 +146,17 @@
   .u-section-1 .u-form-1 {
     width: 320px;
   }
+}
+
+/* Estilo para botão ativo no menu */
+.u-nav-link-active {
+  background-color: #4c7397 !important;
+  color: white !important;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.u-nav-link-active:hover {
+  background-color: #3a5a7a !important;
+  color: white !important;
 }
