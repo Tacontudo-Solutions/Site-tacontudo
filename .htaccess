@@ -1,0 +1,35 @@
+# Cabeçalhos de Segurança HTTP
+# Configuração para Apache
+
+# Content Security Policy (CSP) - Proteção contra XSS
+Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';"
+
+# X-Frame-Options - Proteção contra Clickjacking
+Header always set X-Frame-Options "SAMEORIGIN"
+
+# X-Content-Type-Options - Previne MIME sniffing
+Header always set X-Content-Type-Options "nosniff"
+
+# X-XSS-Protection - Proteção contra XSS (para navegadores legados)
+Header always set X-XSS-Protection "1; mode=block"
+
+# Referrer Policy - Controla informações de referência
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+# HTTP Strict Transport Security (HSTS) - Força HTTPS
+# Descomente a linha abaixo quando tiver certificado SSL/TLS
+# Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+# Permissions Policy - Controla APIs do navegador
+Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), speaker=()"
+
+# Cross-Origin Resource Policy - Proteção contra inclusão cross-origin
+Header always set Cross-Origin-Resource-Policy "same-origin"
+
+# Cross-Origin Opener Policy - Proteção contra ataques cross-origin
+Header always set Cross-Origin-Opener-Policy "same-origin"
+
+# Remove informações do servidor
+ServerTokens Prod
+Header unset Server
+Header always set Server "Apache"

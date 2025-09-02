@@ -1333,3 +1333,196 @@
   background-color: #3a5a7a !important;
   color: white !important;
 }
+
+/* Seção de Certificações */
+.u-section-7 {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+  overflow: hidden;
+}
+.u-section-7::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="%23000" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+  pointer-events: none;
+}
+
+.u-section-7 .u-sheet-1 {
+  position: relative;
+  z-index: 1;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0;
+  padding: 0 20px;
+}
+
+.u-section-7 .u-text-1 {
+  font-size: 2.75rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 15px;
+  letter-spacing: -0.025em;
+  text-align: center !important;
+}
+
+/* Força centralização do título das certificações */
+#sec-certifications h2.u-text-1 {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+}
+
+.u-section-7 .u-text-2 {
+  font-size: 1.25rem;
+  color: #4a5568;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.certifications-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.certification-item {
+  background: white;
+  border-radius: 20px;
+  padding: 60px 80px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.certification-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s;
+}
+
+.certification-item:hover::before {
+  left: 100%;
+}
+
+.certification-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.12);
+}
+
+.certification-image {
+  width: 100%;
+  height: auto;
+  min-width: 800px;
+  max-width: 1000px;
+  min-height: 250px;
+  max-height: 350px;
+  object-fit: contain;
+  filter: contrast(1.1) saturate(1.1);
+  transition: all 0.3s ease;
+}
+
+/* Responsividade para Certificações */
+  @media (max-width: 991px) {
+    .u-section-7 {
+      padding: 50px 0;
+    }
+  
+  .u-section-7 .u-text-1 {
+    font-size: 2.25rem;
+  }
+  
+  .u-section-7 .u-text-2 {
+      font-size: 1.125rem;
+      margin-bottom: 25px;
+    }
+  
+  .certification-item {
+    padding: 50px 60px;
+  }
+  
+  .certification-image {
+    min-width: 650px;
+    max-width: 800px;
+    min-height: 200px;
+    max-height: 280px;
+  }
+}
+
+@media (max-width: 767px) {
+    .u-section-7 {
+      padding: 40px 0;
+    }
+  
+  .u-section-7 .u-text-1 {
+    font-size: 1.875rem;
+  .u-section-7 .u-text-2 {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      padding: 0 15px;
+    }
+  }
+  
+  .certifications-grid {
+    padding: 0 15px;
+  }
+  
+  .certification-item {
+    padding: 40px 30px;
+    border-radius: 15px;
+  }
+  
+  .certification-image {
+    min-width: 500px;
+    max-width: 650px;
+    min-height: 160px;
+    max-height: 220px;
+  }
+}
+
+@media (max-width: 479px) {
+    .u-section-7 {
+      padding: 30px 0;
+    }
+  
+  .u-section-7 .u-text-1 {
+    font-size: 1.625rem;
+  }
+  
+  .u-section-7 .u-text-2 {
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+  
+  .certification-item {
+    padding: 30px 20px;
+  }
+  
+  .certification-image {
+    min-width: 400px;
+    max-width: 500px;
+    min-height: 130px;
+    max-height: 180px;
+  }
+}
