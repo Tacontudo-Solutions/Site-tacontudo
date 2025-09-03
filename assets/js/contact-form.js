@@ -388,8 +388,60 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
+        // Função para limitar a entrada de caracteres
+        function limitInput(e) {
+            // Permitir teclas especiais (backspace, delete, arrow keys, etc.)
+            const allowedKeys = [
+                'Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
+                'Home', 'End', 'Tab', 'Escape', 'Enter'
+            ];
+            
+            // Permitir Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+Z
+            if (e.ctrlKey && ['a', 'c', 'v', 'x', 'z'].includes(e.key.toLowerCase())) {
+                return;
+            }
+            
+            // Se a tecla é permitida, não bloquear
+            if (allowedKeys.includes(e.key)) {
+                return;
+            }
+            
+            // Validação específica para campo nome - apenas letras, espaços e acentos
+            if (fieldName === 'Nome' && e.key.length === 1) {
+                const nameRegex = /^[a-zA-ZÀ-ÿ\s]$/;
+                if (!nameRegex.test(e.key)) {
+                    e.preventDefault();
+                    return false;
+                }
+            }
+            
+            // Se já atingiu o limite e não é uma tecla especial, bloquear
+            if (field.value.length >= maxLength) {
+                e.preventDefault();
+                return false;
+            }
+        }
+        
+        // Função para limitar entrada via paste
+        function limitPaste(e) {
+            setTimeout(() => {
+                // Validação específica para campo nome - remover caracteres especiais
+                if (fieldName === 'Nome') {
+                    const nameRegex = /[^a-zA-ZÀ-ÿ\s]/g;
+                    field.value = field.value.replace(nameRegex, '');
+                }
+                
+                if (field.value.length > maxLength) {
+                    field.value = field.value.substring(0, maxLength);
+                }
+                updateCounter();
+            }, 0);
+        }
+        
         field.addEventListener('input', updateCounter);
         field.addEventListener('keyup', updateCounter);
+        field.addEventListener('keydown', limitInput);
+        field.addEventListener('paste', limitPaste);
         updateCounter();
     }
     
