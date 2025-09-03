@@ -413,10 +413,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Validação específica para campo nome - apenas letras, espaços e acentos
+            // Validação específica para campo nome - apenas letras básicas, espaços e acentos comuns
             if (fieldName === 'Nome' && e.key.length === 1) {
-                const nameRegex = /^[a-zA-ZÀ-ÿ\u00C0-\u017F\s]$/;
-                if (!nameRegex.test(e.key)) {
+                // Lista restritiva de caracteres permitidos: letras básicas + acentos comuns + espaço
+                const allowedChars = /^[a-zA-ZáàâãäéèêëíìîïóòôõöúùûüçñÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇÑ\s]$/;
+                if (!allowedChars.test(e.key)) {
                     e.preventDefault();
                     e.stopPropagation();
                     return false;
@@ -435,8 +436,9 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 // Validação específica para campo nome - remover caracteres especiais
                 if (fieldName === 'Nome') {
-                    const nameRegex = /[^a-zA-ZÀ-ÿ\u00C0-\u017F\s]/g;
-                    field.value = field.value.replace(nameRegex, '');
+                    // Remove qualquer caractere que não seja letra básica, acento comum ou espaço
+                    const invalidChars = /[^a-zA-ZáàâãäéèêëíìîïóòôõöúùûüçñÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇÑ\s]/g;
+                    field.value = field.value.replace(invalidChars, '');
                 }
                 
                 if (field.value.length > maxLength) {
@@ -452,17 +454,18 @@ document.addEventListener('DOMContentLoaded', function() {
         field.addEventListener('paste', limitPaste);
         
         // Validação adicional para campo nome - remover caracteres inválidos em tempo real
-        if (fieldName === 'Nome') {
-            field.addEventListener('input', function(e) {
-                const nameRegex = /[^a-zA-ZÀ-ÿ\u00C0-\u017F\s]/g;
-                const originalValue = field.value;
-                const cleanValue = originalValue.replace(nameRegex, '');
-                if (originalValue !== cleanValue) {
-                    field.value = cleanValue;
-                    updateCounter();
-                }
-            });
-        }
+         if (fieldName === 'Nome') {
+             field.addEventListener('input', function(e) {
+                 // Remove qualquer caractere que não seja letra básica, acento comum ou espaço
+                 const invalidChars = /[^a-zA-ZáàâãäéèêëíìîïóòôõöúùûüçñÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇÑ\s]/g;
+                 const originalValue = field.value;
+                 const cleanValue = originalValue.replace(invalidChars, '');
+                 if (originalValue !== cleanValue) {
+                     field.value = cleanValue;
+                     updateCounter();
+                 }
+             });
+         }
         updateCounter();
     }
     
