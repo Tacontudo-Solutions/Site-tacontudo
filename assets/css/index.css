@@ -366,6 +366,25 @@
     grid-template-columns: 100%;
     grid-auto-columns: calc(100% - 0px);
   }
+
+  /* Centralizar ícones e títulos dos cards no mobile */
+  .u-section-2 .u-icon-1,
+  .u-section-2 .u-icon-2,
+  .u-section-2 .u-icon-3,
+  .u-section-2 .u-icon-4,
+  .u-section-2 .u-icon-5 {
+    margin: 0 auto !important;
+  }
+
+  .u-section-2 .u-text-2,
+  .u-section-2 .u-text-4,
+  .u-section-2 .u-text-6,
+  .u-section-2 .u-text-8,
+  .u-section-2 .u-text-10 {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 } .u-section-3 {
   background-image: none;
 }
