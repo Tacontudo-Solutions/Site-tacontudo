@@ -724,6 +724,29 @@
   .u-section-3 .u-repeater-1 {
     grid-auto-columns: 100%;
   }
+
+  /* Centralizar ícones da seção 3 no mobile */
+  .u-section-3 .u-icon-1,
+  .u-section-3 .u-icon-2,
+  .u-section-3 .u-icon-3,
+  .u-section-3 .u-icon-4,
+  .u-section-3 .u-icon-5,
+  .u-section-3 .u-icon-6 {
+    margin: 0 auto !important;
+  }
+
+  /* Centralizar títulos da seção 3 no mobile */
+  .u-section-3 .u-text-2,
+  .u-section-3 .u-text-4,
+  .u-section-3 .u-text-6,
+  .u-section-3 .u-text-8,
+  .u-section-3 .u-text-10,
+  .u-section-3 .u-text-12 {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 14px !important;
+  }
 }.u-section-4 .u-sheet-1 {
   min-height: 255px;
 }
