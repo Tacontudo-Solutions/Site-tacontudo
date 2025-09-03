@@ -48,6 +48,27 @@
   margin-left: 0;
 }
 
+/* Estilos para indicadores de campos obrigatórios e opcionais */
+.required-field {
+  color: #e74c3c !important;
+  font-weight: bold !important;
+  font-size: 16px !important;
+}
+
+.optional-field {
+  color: #7f8c8d !important;
+  font-style: italic !important;
+  font-size: 12px !important;
+  font-weight: normal !important;
+}
+
+/* Melhorar a aparência dos labels */
+.u-label {
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;
+  display: block !important;
+}
+
 .u-section-1 .u-form-group-4 {
   margin-left: 0;
 }
