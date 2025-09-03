@@ -418,6 +418,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const nameRegex = /^[a-zA-ZÀ-ÿ\u00C0-\u017F\s]$/;
                 if (!nameRegex.test(e.key)) {
                     e.preventDefault();
+                    e.stopPropagation();
                     return false;
                 }
             }
@@ -449,6 +450,19 @@ document.addEventListener('DOMContentLoaded', function() {
         field.addEventListener('keyup', updateCounter);
         field.addEventListener('keydown', limitInput);
         field.addEventListener('paste', limitPaste);
+        
+        // Validação adicional para campo nome - remover caracteres inválidos em tempo real
+        if (fieldName === 'Nome') {
+            field.addEventListener('input', function(e) {
+                const nameRegex = /[^a-zA-ZÀ-ÿ\u00C0-\u017F\s]/g;
+                const originalValue = field.value;
+                const cleanValue = originalValue.replace(nameRegex, '');
+                if (originalValue !== cleanValue) {
+                    field.value = cleanValue;
+                    updateCounter();
+                }
+            });
+        }
         updateCounter();
     }
     
