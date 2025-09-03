@@ -707,4 +707,11 @@
     align-items: center !important;
     justify-content: center !important;
   }
+  
+  /* Centralizar texto do rodapé no mobile */
+  .u-footer .u-text-1 {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
