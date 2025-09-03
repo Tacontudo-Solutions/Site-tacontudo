@@ -908,3 +908,48 @@
     margin-top: 151px;
   }
 }
+
+/* Customizações para mobile - Logo menor e menu alinhado */
+@media (max-width: 767px) {
+  .u-header .u-image-1 {
+    width: 180px !important;
+    height: 37px !important;
+    margin: 0 !important;
+  }
+  
+  .u-header .u-sheet-1 {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 12px 15px !important;
+    min-height: 65px !important;
+    width: 100% !important;
+    flex-direction: row !important;
+  }
+  
+  .u-header .u-menu {
+    order: 2 !important;
+    margin: 0 !important;
+    flex: 0 0 auto !important;
+  }
+  
+  .u-header .u-logo {
+    order: 1 !important;
+    margin: 0 !important;
+    flex: 0 0 auto !important;
+  }
+  
+  .menu-collapse {
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+  }
+  
+  .menu-collapse .u-nav-link {
+    padding: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
