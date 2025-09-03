@@ -134,6 +134,13 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (nameField.value.length > 50) {
             showFieldError(nameField, 'O nome deve ter no máximo 50 caracteres.');
             isValid = false;
+        } else {
+            // Validar se contém apenas letras, espaços e acentos
+            const nameRegex = /^[a-zA-ZÀ-ÿ\u00C0-\u017F\s]+$/;
+            if (!nameRegex.test(nameField.value.trim())) {
+                showFieldError(nameField, 'O nome deve conter apenas letras, espaços e acentos.');
+                isValid = false;
+            }
         }
         
         // Validar email
@@ -408,7 +415,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Validação específica para campo nome - apenas letras, espaços e acentos
             if (fieldName === 'Nome' && e.key.length === 1) {
-                const nameRegex = /^[a-zA-ZÀ-ÿ\s]$/;
+                const nameRegex = /^[a-zA-ZÀ-ÿ\u00C0-\u017F\s]$/;
                 if (!nameRegex.test(e.key)) {
                     e.preventDefault();
                     return false;
@@ -427,7 +434,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 // Validação específica para campo nome - remover caracteres especiais
                 if (fieldName === 'Nome') {
-                    const nameRegex = /[^a-zA-ZÀ-ÿ\s]/g;
+                    const nameRegex = /[^a-zA-ZÀ-ÿ\u00C0-\u017F\s]/g;
                     field.value = field.value.replace(nameRegex, '');
                 }
                 
