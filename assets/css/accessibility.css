@@ -1,0 +1,289 @@
+/* ========================================
+   MELHORIAS DE ACESSIBILIDADE - WCAG 2.1
+   ======================================== */
+
+/* Foco visível melhorado para navegação por teclado */
+*:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 1px #ffffff;
+}
+
+/* Foco específico para botões */
+button:focus,
+.u-btn:focus,
+input[type="submit"]:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+    background-color: #0066cc;
+    color: #ffffff;
+}
+
+/* Foco para links */
+a:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+    background-color: rgba(0, 95, 204, 0.1);
+    text-decoration: underline;
+}
+
+/* Foco para campos de formulário */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+    border-color: #005fcc;
+    box-shadow: 0 0 0 1px #005fcc;
+}
+
+/* Melhorar contraste de texto */
+.u-text {
+    color: #212529 !important;
+}
+
+/* Contraste melhorado para links */
+a {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #003d82;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #6f42c1;
+}
+
+/* Botões com melhor contraste */
+.u-btn {
+    background-color: #0066cc !important;
+    color: #ffffff !important;
+    border: 2px solid #0066cc !important;
+    font-weight: 600;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px 24px;
+}
+
+.u-btn:hover {
+    background-color: #0056b3 !important;
+    border-color: #0056b3 !important;
+    color: #ffffff !important;
+}
+
+.u-btn:active {
+    background-color: #004494 !important;
+    border-color: #004494 !important;
+}
+
+/* Melhorar legibilidade de texto em fundos escuros */
+.u-section-1 .u-text,
+.u-section-2 .u-text {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Skip links para navegação por teclado */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000000;
+    color: #ffffff;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 9999;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.skip-link:focus {
+    top: 6px;
+    outline: 3px solid #ffffff;
+}
+
+/* Melhorar área de clique para elementos interativos */
+.u-nav-link,
+.u-hamburger-link {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Indicadores visuais para elementos obrigatórios */
+input[required]:after,
+textarea[required]:after {
+    content: " *";
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Melhorar visibilidade de placeholders */
+input::placeholder,
+textarea::placeholder {
+    color: #6c757d;
+    opacity: 1;
+    font-style: italic;
+}
+
+/* Estados de erro mais visíveis */
+.error,
+.u-form-send-error {
+    border: 2px solid #dc3545 !important;
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+/* Estados de sucesso mais visíveis */
+.success,
+.u-form-send-success {
+    border: 2px solid #28a745 !important;
+    background-color: #d4edda !important;
+    color: #155724 !important;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+/* Melhorar legibilidade em dispositivos móveis */
+@media (max-width: 768px) {
+    body {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+    
+    .u-btn {
+        min-height: 48px;
+        font-size: 18px;
+        padding: 14px 28px;
+    }
+    
+    .u-nav-link {
+        min-height: 48px;
+        font-size: 18px;
+    }
+}
+
+/* Reduzir movimento para usuários sensíveis */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Modo de alto contraste */
+@media (prefers-contrast: high) {
+    * {
+        border-color: #000000 !important;
+    }
+    
+    .u-btn {
+        background-color: #000000 !important;
+        color: #ffffff !important;
+        border: 3px solid #000000 !important;
+    }
+    
+    a {
+        color: #0000ff !important;
+        text-decoration: underline !important;
+    }
+}
+
+/* Suporte para modo escuro */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #ffffff;
+    }
+    
+    .u-header {
+        background-color: #1e1e1e !important;
+        color: #ffffff !important;
+    }
+    
+    .u-nav-link {
+        color: #ffffff !important;
+    }
+    
+    input,
+    textarea {
+        background-color: #2d2d2d;
+        color: #ffffff;
+        border-color: #555555;
+    }
+}
+
+/* Landmarks ARIA visuais para desenvolvimento */
+[role="main"],
+[role="navigation"],
+[role="banner"],
+[role="contentinfo"] {
+    position: relative;
+}
+
+/* Melhorar visibilidade de elementos focáveis */
+[tabindex="-1"]:focus {
+    outline: none;
+}
+
+[tabindex="0"]:focus,
+[tabindex="1"]:focus,
+[tabindex="2"]:focus,
+[tabindex="3"]:focus,
+[tabindex="4"]:focus,
+[tabindex="5"]:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+}
+
+/* Texto alternativo para imagens decorativas */
+img[alt=""],
+img:not([alt]) {
+    border: 2px dashed #ff6b6b;
+}
+
+/* Indicador visual para elementos com problemas de acessibilidade */
+.accessibility-warning {
+    border: 2px solid #ffc107 !important;
+    background-color: rgba(255, 193, 7, 0.1) !important;
+}
+
+/* Melhorar espaçamento para leitores de tela */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Mostrar texto para leitores de tela quando focado */
+.sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 4px 8px;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    z-index: 9999;
+}

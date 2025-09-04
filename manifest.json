@@ -1,0 +1,90 @@
+{
+  "name": "TACONTUDO - Consultoria em Tecnologia",
+  "short_name": "TACONTUDO",
+  "description": "Consultoria especializada em acessibilidade digital, testes contínuos, segurança cibernética, DevSecOps e engenharia de software.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2c3e50",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "categories": ["business", "technology", "consulting"],
+  "icons": [
+    {
+      "src": "assets/images/tacontudo_logo2.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/tacontudo_logo2.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/images/banner-home.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "platform": "wide",
+      "label": "Página inicial da TACONTUDO"
+    },
+    {
+      "src": "assets/images/banner-sobre.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "platform": "wide",
+      "label": "Página sobre a TACONTUDO"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Serviços",
+      "short_name": "Serviços",
+      "description": "Veja nossos serviços de consultoria",
+      "url": "/servicos.html",
+      "icons": [
+        {
+          "src": "assets/images/3281188-e7a3d39a.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contato",
+      "short_name": "Contato",
+      "description": "Entre em contato conosco",
+      "url": "/Contato.html",
+      "icons": [
+        {
+          "src": "assets/images/2791568-72648669.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Leia nossos artigos técnicos",
+      "url": "/blog/blog.html",
+      "icons": [
+        {
+          "src": "assets/images/2818341-4e0e60d6.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+}

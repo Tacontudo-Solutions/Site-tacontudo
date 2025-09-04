@@ -1,0 +1,47 @@
+# Robots.txt para TACONTUDO
+# Configuração para otimizar indexação pelos motores de busca
+
+User-agent: *
+Allow: /
+
+# Bloquear arquivos de configuração e sensíveis
+Disallow: /.htaccess
+Disallow: /nginx-security-headers.conf
+Disallow: /assets/css/theme.css
+Disallow: /css/
+
+# Permitir acesso aos recursos importantes
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /assets/images/
+
+# Sitemap
+Sitemap: https://tacontudo-solutions.github.io/Site-tacontudo/sitemap.xml
+
+# Crawl-delay para ser respeitoso com os servidores
+Crawl-delay: 1
+
+# Configurações específicas para diferentes bots
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Bloquear bots maliciosos conhecidos
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
