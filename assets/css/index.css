@@ -1627,3 +1627,93 @@
     max-height: none;
   }
 }
+
+/* Estilos para a seção de casos de sucesso */
+.u-section-success-cases {
+  padding: 60px 0;
+  background-color: #ffffff !important;
+}
+
+.u-section-success-cases .u-sheet-1 {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.u-section-success-cases .u-text-1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #333333 !important;
+}
+
+.u-section-success-cases .u-text-2 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+  font-weight: 700;
+  color: #333333 !important;
+}
+
+.u-section-success-cases .u-text-3 {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  font-weight: 500;
+  color: #007bff !important;
+}
+
+.u-section-success-cases .u-text-4 {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #666666 !important;
+}
+
+.u-section-success-cases .u-btn-success {
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.u-section-success-cases .u-btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 991px) {
+  .u-section-success-cases .u-text-1 {
+    font-size: 2rem;
+  }
+  
+  .u-section-success-cases .u-text-2 {
+    font-size: 1.7rem;
+  }
+  
+  .u-section-success-cases .u-text-3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-success-cases {
+    padding: 40px 0;
+  }
+  
+  .u-section-success-cases .u-text-1 {
+    font-size: 1.8rem;
+  }
+  
+  .u-section-success-cases .u-text-2 {
+    font-size: 1.5rem;
+  }
+  
+  .u-section-success-cases .u-text-3 {
+    font-size: 1.2rem;
+  }
+  
+  .u-section-success-cases .u-text-4 {
+    font-size: 1rem;
+  }
+}
