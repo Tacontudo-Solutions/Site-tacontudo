@@ -38,8 +38,8 @@ Este documento detalha todas as alterações bem-sucedidas implementadas no site
 <meta property="og:title" content="TACONTUDO - Consultoria em QA e Segurança">
 <meta property="og:description" content="Consultoria especializada...">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://tacontudo-solutions.github.io/Site-tacontudo">
-<meta property="og:image" content="https://tacontudo-solutions.github.io/Site-tacontudo/assets/images/ac830196-9b2d-4398-a988-a4dffde97a47.jpg">
+<meta property="og:url" content="https://tacontudo.com">
+<meta property="og:image" content="https://tacontudo.com/assets/images/ac830196-9b2d-4398-a988-a4dffde97a47.jpg">
 ```
 
 ### 2.3 Twitter Cards

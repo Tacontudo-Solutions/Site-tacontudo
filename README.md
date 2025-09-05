@@ -6,7 +6,7 @@
 
 Site oficial da **Tacontudo Solutions**, empresa especializada em soluções tecnológicas e serviços digitais. O site foi desenvolvido com foco em performance, acessibilidade e experiência do usuário, utilizando tecnologias web modernas.
 
-🌐 **Site ao vivo:** [https://tacontudo-solutions.github.io/Site-tacontudo/](https://tacontudo-solutions.github.io/Site-tacontudo/)
+🌐 **Site ao vivo:** [https://tacontudo.com](https://tacontudo.com)
 
 ## ✨ Características
 
@@ -148,7 +148,7 @@ SITE TACONTUDO/
 
 ### GitHub Pages (Atual)
 O site está hospedado no GitHub Pages:
-- **URL:** https://tacontudo-solutions.github.io/Site-tacontudo/
+- **URL:** https://tacontudo.com
 - **Branch:** `main`
 - **Deploy automático:** Sim
 
@@ -186,7 +186,7 @@ Este projeto é propriedade da **Tacontudo Solutions**. Todos os direitos reserv
 
 ## 📞 Contato
 
-- **Website:** [tacontudo-solutions.github.io](https://tacontudo-solutions.github.io/Site-tacontudo/)
+- **Website:** [tacontudo.com](https://tacontudo.com)
 - **Email:** marcelo.andrade@tacontudo.com
 - **GitHub:** [@Tacontudo-Solutions](https://github.com/Tacontudo-Solutions)
 

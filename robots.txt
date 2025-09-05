@@ -16,7 +16,7 @@ Allow: /assets/js/
 Allow: /assets/images/
 
 # Sitemap
-Sitemap: https://tacontudo-solutions.github.io/Site-tacontudo/sitemap.xml
+Sitemap: https://tacontudo.com/sitemap.xml
 
 # Crawl-delay para ser respeitoso com os servidores
 Crawl-delay: 1

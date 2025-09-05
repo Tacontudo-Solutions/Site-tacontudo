@@ -1,4 +1,18 @@
 # ========================================
+# CONFIGURAÇÕES PARA TACONTUDO.COM
+# ========================================
+
+# Redirecionamento para HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirecionamento para www (opcional - descomente se quiser forçar www)
+# RewriteCond %{HTTP_HOST} !^www\.
+RewriteCond %{HTTP_HOST} ^tacontudo\.com$ [NC]
+# RewriteRule ^(.*)$ https://www.tacontudo.com/$1 [L,R=301]
+
+# ========================================
 # OTIMIZAÇÕES DE PERFORMANCE
 # ========================================
 
