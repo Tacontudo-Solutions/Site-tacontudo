@@ -1,0 +1,18 @@
+# Configurações de linguagem para arquivos específicos
+# Resolve falsos avisos do VS Code
+
+# Arquivo .htaccess deve ser tratado como configuração Apache
+.htaccess linguist-language=Apache
+
+# Arquivos de configuração Nginx
+*.conf linguist-language=Nginx
+nginx-security-headers.conf linguist-language=Nginx
+
+# Arquivos de documentação
+*.md linguist-language=Markdown
+
+# Arquivos web
+*.html linguist-language=HTML
+*.css linguist-language=CSS
+*.js linguist-language=JavaScript
+*.json linguist-language=JSON

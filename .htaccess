@@ -9,7 +9,7 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Redirecionamento para www (opcional - descomente se quiser forçar www)
 # RewriteCond %{HTTP_HOST} !^www\.
-RewriteCond %{HTTP_HOST} ^tacontudo\.com$ [NC]
+# RewriteCond %{HTTP_HOST} ^tacontudo\.com$ [NC]
 # RewriteRule ^(.*)$ https://www.tacontudo.com/$1 [L,R=301]
 
 # ========================================
@@ -94,7 +94,7 @@ RewriteCond %{HTTP_HOST} ^tacontudo\.com$ [NC]
 
 <IfModule mod_headers.c>
     # Content Security Policy (CSP) - Restritiva e Segura
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'nonce-random123' https://www.google-analytics.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; media-src 'self'; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests;"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google-analytics.com https://www.googletagmanager.com https://cdn.emailjs.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://api.emailjs.com; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; media-src 'self'; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests;"
 
     # X-Frame-Options - Proteção contra Clickjacking
     Header always set X-Frame-Options "SAMEORIGIN"
@@ -121,14 +121,14 @@ RewriteCond %{HTTP_HOST} ^tacontudo\.com$ [NC]
     # Cross-Origin Opener Policy - Proteção contra ataques cross-origin
     Header always set Cross-Origin-Opener-Policy "same-origin"
 
-    # Expect-CT - Certificate Transparency
-    Header always set Expect-CT "max-age=86400, enforce"
+    # Expect-CT - Certificate Transparency (comentado para evitar problemas)
+    # Header always set Expect-CT "max-age=86400, enforce"
 
     # Clear-Site-Data em logout (se aplicável)
     # Header always set Clear-Site-Data "cache, cookies, storage, executionContexts"
 
     # Cache-Control para recursos sensíveis
-    <FilesMatch "\.(php|cgi|pl|htm)$">
+    <FilesMatch "\.(php|cgi|pl|htm|html)$">
         Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
         Header always set Pragma "no-cache"
         Header always set Expires "Thu, 01 Jan 1970 00:00:00 GMT"
@@ -140,5 +140,150 @@ RewriteCond %{HTTP_HOST} ^tacontudo\.com$ [NC]
     Header always set Server "WebServer"
 </IfModule>
 
-# Configurações do servidor (apenas para Apache com mod_security)
+# ========================================
+# PROTEÇÃO CONTRA ATAQUES E LIMITAÇÃO DE IP
+# ========================================
+
+# Bloqueio de User-Agents maliciosos
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Bloquear bots e scanners maliciosos
+    RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+    RewriteCond %{HTTP_USER_AGENT} (bot|crawler|spider|scraper|scanner|nikto|sqlmap|nmap|masscan|wget|curl) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} (libwww|lwp|python|perl|java|go-http) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} (semrush|ahrefs|moz|majestic) [NC]
+    RewriteRule ^(.*)$ - [F,L]
+    
+    # Bloquear métodos HTTP desnecessários
+    RewriteCond %{REQUEST_METHOD} ^(TRACE|DELETE|TRACK|DEBUG|OPTIONS|PUT|PATCH) [NC]
+    RewriteRule ^(.*)$ - [F,L]
+    
+    # Proteção contra SQL Injection em URLs
+    RewriteCond %{QUERY_STRING} (union|select|insert|delete|update|drop|create|alter|exec|script) [NC,OR]
+    RewriteCond %{QUERY_STRING} (\<|\>|%3C|%3E|%00|%2E%2E) [NC,OR]
+    RewriteCond %{QUERY_STRING} (javascript:|vbscript:|onload|onerror|onclick) [NC]
+    RewriteRule ^(.*)$ - [F,L]
+    
+    # Proteção contra XSS em URLs
+    RewriteCond %{QUERY_STRING} (<script|</script|javascript:|vbscript:) [NC,OR]
+    RewriteCond %{QUERY_STRING} (alert\(|confirm\(|prompt\() [NC]
+    RewriteRule ^(.*)$ - [F,L]
+    
+    # Bloquear tentativas de acesso a arquivos sensíveis
+    RewriteCond %{REQUEST_URI} (wp-config|wp-admin|admin|login|phpmyadmin|xmlrpc) [NC,OR]
+    RewriteCond %{REQUEST_URI} (\.htaccess|\.htpasswd|\.env|\.git|\.svn) [NC,OR]
+    RewriteCond %{REQUEST_URI} (config|database|backup|dump|install|setup) [NC]
+    RewriteRule ^(.*)$ - [F,L]
+</IfModule>
+
+# Proteção contra hotlinking de imagens
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_REFERER} !^$
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?tacontudo\.com [NC]
+    RewriteCond %{REQUEST_URI} \.(jpe?g|png|gif|bmp|svg|webp)$ [NC]
+    RewriteRule ^.*\.(jpe?g|png|gif|bmp|svg|webp)$ - [F,L]
+</IfModule>
+
+# Limitação de tamanho de requisição (proteção contra DoS)
+<IfModule mod_security2.c>
+    # Limitar tamanho do corpo da requisição (10MB)
+    SecRequestBodyLimit 10485760
+    SecRequestBodyNoFilesLimit 131072
+    
+    # Limitar número de argumentos
+    SecArgumentsLimit 255
+    SecArgumentNameLength 100
+    SecArgumentValueLength 400
+</IfModule>
+
+# Bloqueio de IPs específicos (adicione IPs maliciosos conforme necessário)
+<RequireAll>
+    Require all granted
+    # Require not ip 192.168.1.100
+    # Require not ip 10.0.0.50
+    # Adicione mais IPs conforme necessário
+</RequireAll>
+
+# Proteção contra Directory Traversal
+<IfModule mod_alias.c>
+    RedirectMatch 403 \.\./
+    RedirectMatch 403 \.\.\\
+</IfModule>
+
+# Bloquear acesso a arquivos de backup e temporários
+<FilesMatch "\.(bak|backup|old|tmp|temp|log|sql|gz|tar|zip|rar)$">
+    Require all denied
+</FilesMatch>
+
+# Bloquear acesso a arquivos de configuração
+<FilesMatch "\.(htaccess|htpasswd|ini|conf|cfg|config|env)$">
+    Require all denied
+</FilesMatch>
+
+# Bloquear acesso a diretórios de controle de versão
+<DirectoryMatch "\.git">
+    Require all denied
+</DirectoryMatch>
+
+<DirectoryMatch "\.svn">
+    Require all denied
+</DirectoryMatch>
+
+# Bloquear acesso a arquivos PHP desnecessários (mantenha apenas os necessários)
+# <FilesMatch "\.php$">
+#     Require all denied
+# </FilesMatch>
+
+# Proteção contra CSRF para formulários
+<IfModule mod_headers.c>
+    # Adicionar token CSRF para formulários
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# Rate Limiting básico (requer mod_evasive)
+<IfModule mod_evasive24.c>
+    DOSHashTableSize    2048
+    DOSPageCount        10
+    DOSSiteCount        50
+    DOSPageInterval     1
+    DOSSiteInterval     1
+    DOSBlockingPeriod   300
+    # DOSLogDir           "/var/log/httpd"
+    # DOSEmailNotify      admin@tacontudo.com
+</IfModule>
+
+# Configurações do servidor (apenas para Apache)
 # ServerTokens Prod
+# ServerSignature Off
+
+# ========================================
+# MONITORAMENTO E LOGS
+# ========================================
+
+# Log de tentativas de acesso negado
+<IfModule mod_log_config.c>
+    LogFormat "%h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\" %D" security
+    # CustomLog /var/log/apache2/security.log security
+</IfModule>
+
+# ========================================
+# INSTRUÇÕES DE USO
+# ========================================
+
+# Para ativar o bloqueio de IPs específicos:
+# 1. Descomente as linhas "Require not ip" acima
+# 2. Substitua pelos IPs que deseja bloquear
+# 3. Salve o arquivo
+
+# Para monitorar ataques:
+# 1. Verifique os logs do servidor
+# 2. Use ferramentas como fail2ban
+# 3. Configure alertas por email
+
+# IMPORTANTE:
+# - Teste sempre em ambiente de desenvolvimento primeiro
+# - Mantenha backup das configurações
+# - Monitore os logs regularmente
+# - Atualize as regras conforme necessário
