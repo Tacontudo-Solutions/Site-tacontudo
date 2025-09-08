@@ -252,8 +252,8 @@
 }
 
 .u-section-2 .u-text-6 {
-  width: auto;
-  margin: 28px 22px 0;
+  font-family: Poppins;
+  margin: 28px auto 0;
 }
 
 .u-section-2 .u-list-item-6 {
@@ -281,8 +281,8 @@
 }
 
 .u-section-2 .u-text-7 {
-  width: auto;
-  margin: 28px 22px 0;
+  font-family: Poppins;
+  margin: 28px auto 0;
 }
 
 .u-section-2 .u-list-item-7 {
@@ -311,8 +311,7 @@
 
 .u-section-2 .u-text-8 {
   font-family: Poppins;
-  width: auto;
-  margin: 28px 22px 0;
+  margin: 28px auto 0;
 }
 
 .u-section-2 .u-list-item-8 {
@@ -340,8 +339,8 @@
 }
 
 .u-section-2 .u-text-9 {
-  width: auto;
-  margin: 28px 22px 0;
+  font-family: Poppins;
+  margin: 28px auto 0;
 }
 
 @media (max-width: 1199px) {
@@ -572,6 +571,7 @@
 
   .u-section-3 .u-text-2 {
     margin-left: auto;
+    margin-right: auto;
   }
 
   .u-section-3 .u-text-3 {
