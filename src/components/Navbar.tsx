@@ -28,7 +28,7 @@ export default function Navbar() {
             />
           </a>
 
-          <nav className="hidden items-center gap-8 md:flex" aria-label="Navegação principal">
+          <nav className="hidden items-center gap-6 xl:flex" aria-label="Navegação principal">
             {NAV.map((n) => (
               <a
                 key={n.href}
@@ -43,7 +43,7 @@ export default function Navbar() {
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-brand-yellow hover:text-brand-yellow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-yellow md:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-brand-yellow hover:text-brand-yellow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-yellow xl:hidden"
               aria-controls="mobile-navigation"
               aria-expanded={isMenuOpen}
               aria-label={isMenuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
@@ -66,7 +66,7 @@ export default function Navbar() {
         </div>
 
         {isMenuOpen && (
-          <div id="mobile-navigation" className="absolute left-0 right-0 top-full border-b border-white/10 bg-ink px-4 py-3 shadow-2xl md:hidden">
+          <div id="mobile-navigation" className="absolute left-0 right-0 top-full border-b border-white/10 bg-ink px-4 py-3 shadow-2xl xl:hidden">
             <nav className="grid gap-1" aria-label="Navegação mobile">
               {NAV.map((n) => (
                 <a
