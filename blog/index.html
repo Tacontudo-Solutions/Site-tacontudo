@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog TACONTUDO — Artigos sobre Desenvolvimento, QA e Segurança</title>
+    <meta
+      name="description"
+      content="Acompanhe artigos estratégicos e insights práticos sobre desenvolvimento de software, consultoria de QA, automação de testes e cibersegurança."
+    />
+    <link rel="canonical" href="https://tacontudo.com/blog/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0b1220" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Blog TACONTUDO — Artigos sobre Desenvolvimento, QA e Segurança" />
+    <meta
+      property="og:description"
+      content="Acompanhe artigos estratégicos e insights práticos sobre desenvolvimento, QA e cibersegurança."
+    />
+    <meta property="og:url" content="https://tacontudo.com/blog/" />
+    <meta property="og:image" content="https://tacontudo.com/og-image.png" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/legal.css" />
+
+    <style>
+      /* Estilos refinados nível Apple para o Blog TACONTUDO */
+      h1, h2, h3 {
+        letter-spacing: -0.02em;
+      }
+      
+      /* Seção Hero de Largura Total (Edge-to-Edge Canvas 1) */
+      .blog-hero-section {
+        background: radial-gradient(1100px 500px at 50% -10%, rgba(71, 138, 201, 0.12), transparent 70%), #0b1220;
+        padding: 96px 0 80px;
+        position: relative;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .header-flex-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 64px;
+      }
+      .header-text {
+        flex: 1;
+        max-width: 580px;
+      }
+      .header-text h1 {
+        font-size: clamp(34px, 6vw, 48px);
+        font-weight: 700;
+        line-height: 1.1;
+        margin: 0 0 16px;
+      }
+      .header-text .lead {
+        font-size: 19px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: var(--txt-soft);
+        margin: 0;
+      }
+      .doc-head {
+        padding: 0 !important;
+      }
+
+      /* Marca estática do blog */
+      #blog-brand-mark {
+        width: 280px;
+        height: 280px;
+        position: relative;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(71, 138, 201, 0.06) 0%, transparent 70%);
+      }
+      #blog-brand-mark img {
+        width: 72%;
+        height: 72%;
+        object-fit: contain;
+        filter: drop-shadow(0 0 28px rgba(255, 196, 0, 0.2));
+      }
+      /* Seção de Feed de Artigos (Edge-to-Edge Canvas 2) */
+      .blog-feed-section {
+        background: #070b14;
+        padding: 96px 0;
+      }
+      .section-title {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--txt-soft);
+        margin-bottom: 32px;
+      }
+
+      /* Grid de Artigos */
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 32px;
+      }
+      .post-card {
+        position: relative;
+        background: #111a2e;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 18px; /* rounded.lg */
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 380px;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+      }
+      .post-card:hover {
+        transform: translateY(-4px) scale(1.01);
+        border-color: rgba(71, 138, 201, 0.3);
+      }
+      .post-card-bg {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(17, 26, 46, 0.45) 0%, rgba(7, 11, 20, 0.95) 100%), var(--bg-image, none) no-repeat center center;
+        background-size: cover;
+        z-index: 1;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .post-card:hover .post-card-bg {
+        transform: scale(1.05);
+      }
+      .post-card-content {
+        position: relative;
+        z-index: 2;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+      .post-tag {
+        font-family: var(--font-display);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--brand-blue);
+        margin-bottom: 16px;
+      }
+      .post-card h2 {
+        font-size: 22px;
+        font-weight: 600;
+        margin: 0 0 12px;
+        border: 0;
+        padding: 0;
+        line-height: 1.3;
+      }
+      .post-card h2 a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      .post-card h2 a:hover {
+        color: var(--brand-blue);
+      }
+      .post-card p {
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--txt-soft);
+        margin-bottom: 28px;
+        flex-grow: 1;
+      }
+      .post-readmore {
+        font-family: var(--font-display);
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--brand-blue) !important;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: color 0.2s ease, transform 0.2s ease;
+      }
+      .post-readmore:hover {
+        color: #fff !important;
+        text-decoration: none;
+        transform: translateX(4px);
+      }
+      .post-meta-info {
+        font-size: 13px;
+        color: var(--txt-soft);
+        margin-bottom: 12px;
+        display: flex;
+        gap: 12px;
+      }
+
+      @media (max-width: 768px) {
+        .blog-hero-section {
+          padding: 64px 0;
+        }
+        .header-flex-container {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 40px;
+        }
+        #blog-brand-mark {
+          width: 220px;
+          height: 220px;
+          align-self: center;
+          background: radial-gradient(circle, rgba(71, 138, 201, 0.05) 0%, transparent 70%);
+        }
+        .blog-feed-section {
+          padding: 64px 0;
+        }
+      }
+    </style>
+
+    <!-- Gerenciamento de cookies (AdOpt) -->
+    <meta name="adopt-website-id" content="1c9c01f7-bb55-405d-98da-24743eb5b9c9" />
+    <script src="//tag.goadopt.io/injector.js?website_code=1c9c01f7-bb55-405d-98da-24743eb5b9c9" class="adopt-injector"></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a href="/" aria-label="Voltar à página inicial da TACONTUDO">
+          <img src="/logo-amarelo.svg" alt="TACONTUDO IT Solutions" />
+        </a>
+        <a class="back-link" href="/">← Voltar ao site</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Seção Hero: Fundo escuro e marca TACONTUDO -->
+      <section class="blog-hero-section">
+        <div class="wrap header-flex-container">
+          <div class="header-text doc-head">
+            <p class="eyebrow">Insights & Artigos</p>
+            <h1>Blog TACONTUDO</h1>
+            <p class="lead">Artigos estratégicos sobre desenvolvimento de software ágil, processos de qualidade de software (QA) e cibersegurança corporativa.</p>
+          </div>
+          
+          <div id="blog-brand-mark">
+            <img src="/logo-mark.webp" alt="Marca TACONTUDO" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Feed de Artigos -->
+      <section class="blog-feed-section">
+        <div class="wrap">
+          <div class="section-title">Publicações Recentes</div>
+          <div class="blog-grid">
+            <!-- Card 1: Quanto custa ignorar o QA? -->
+            <article class="post-card" style="--bg-image: url('/blog/quanto-custa-ignorar-o-qa/blog2.webp')">
+              <div class="post-card-bg"></div>
+              <div class="post-card-content">
+                <div class="post-meta-info">
+                  <span>25 de Junho de 2026</span>
+                  <span>•</span>
+                  <span>Leitura: 5 min</span>
+                </div>
+                <div class="post-tag">Qualidade (QA)</div>
+                <h2><a href="/blog/quanto-custa-ignorar-o-qa/">Quanto custa ignorar o QA? O impacto financeiro dos bugs</a></h2>
+                <p>Descubra o impacto real dos erros de software no faturamento das empresas e como a consultoria preventiva de qualidade reduz custos de retrabalho.</p>
+                <a href="/blog/quanto-custa-ignorar-o-qa/" class="post-readmore" aria-label="Ler artigo Completo">Ler Artigo Completo →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <nav aria-label="Links institucionais">
+          <a href="/">Início</a>
+          <a href="/politica-de-privacidade/">Privacidade</a>
+          <a href="/politica-de-cookies/">Cookies</a>
+        </nav>
+        <p>&copy; 2026 TACONTUDO. Todos os direitos reservados. Com qualidade e segurança não se brinca.</p>
+      </div>
+    </footer>
+
+
+  </body>
+</html>
